@@ -1,0 +1,340 @@
+{
+  "clients": [
+    {
+      "name": "Amanda Lopes Inocêncio",
+      "cpf": "097.342.559-83",
+      "pin": "0983",
+      "debts": {
+        "atrasada": {
+          "value": 4289.06,
+          "negotiation": {
+            "entrada_minima": 2500.00,
+            "parcelamento_entrada_max": 6,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 120.00,
+            "taxa_saldo": 0.009
+          }
+        },
+        "a_vencer": {
+          "value": 4193.43,
+          "negotiation": {
+            "entrada_minima": 1500.00,
+            "parcelamento_entrada_max": 6,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 85.00,
+            "taxa_saldo": 0.005
+          }
+        },
+        "total": {
+          "value": 8482.49,
+          "negotiation": {
+            "entrada_minima": 2500.00,
+            "parcelamento_entrada_max": 6,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 175.00,
+            "taxa_saldo": 0.009
+          }
+        }
+      }
+    },
+    {
+      "name": "Maicon Pereira",
+      "cpf": "111.919.319-27",
+      "pin": "1927",
+      "debts": {
+        "atrasada": {
+          "value": 2474.08,
+          "negotiation": {
+            "entrada_minima": 1500.00,
+            "parcelamento_entrada_max": 6,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 100.00,
+            "taxa_saldo": 0.005
+          }
+        },
+        "a_vencer": {
+          "value": 7515.00,
+          "negotiation": {
+            "entrada_minima": 3500.00,
+            "parcelamento_entrada_max": 7,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 185.00,
+            "taxa_saldo": 0.009
+          }
+        },
+        "total": {
+          "value": 9989.08,
+          "negotiation": {
+            "entrada_minima": 4500.00,
+            "parcelamento_entrada_max": 10,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 250.00,
+            "taxa_saldo": 0.009
+          }
+        }
+      }
+    },
+    {
+      "name": "Rosangela Santos",
+      "cpf": "111.222.333-44",
+      "pin": "3344",
+      "debts": {
+        "atrasada": {
+          "value": 1349.40,
+          "negotiation": {
+            "entrada_minima": 500.00,
+            "parcelamento_entrada_max": 5,
+            "taxa_entrada": 0.009,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 85.00,
+            "taxa_saldo": 0.02
+          }
+        }
+      }
+    },
+    {
+      "name": "Alexandra Inocencio",
+      "cpf": "079.033.129-28",
+      "pin": "2928",
+      "debts": {
+        "atrasada": {
+          "value": 4131.87
+        },
+        "a_vencer": {
+          "value": 2456.60
+        },
+        "total": {
+          "value": 6588.47,
+          "negotiation": {
+            "entrada_minima": 1400.00,
+            "parcelamento_entrada_max": 7,
+            "taxa_entrada": 0.000,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 85.00,
+            "taxa_saldo": 0.001
+          }
+        }
+      }
+    },
+    {
+      "name": "Angel Antonio",
+      "cpf": "333.444.555-66",
+      "pin": "5566",
+      "debts": {
+        "atrasada": {
+          "value": 1948.87
+        },
+        "a_vencer": {
+          "value": 10580.00
+        },
+        "total": {
+          "value": 12528.78,
+          "negotiation": {
+            "entrada_minima": 3000.00,
+            "parcelamento_entrada_max": 6,
+            "taxa_entrada": 0.000,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 150.00,
+            "taxa_saldo": 0.001
+          }
+        }
+      }
+    },
+    {
+      "name": "Jordan",
+      "cpf": "222.333.444-55",
+      "pin": "4455",
+      "debts": {
+        "atrasada": {
+          "value": 2144.25
+        },
+        "a_vencer": {
+          "value": 555.00
+        },
+        "total": {
+          "value": 2699.26,
+          "negotiation": {
+            "entrada_minima": 1000.00,
+            "parcelamento_entrada_max": 5,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 85.00,
+            "taxa_saldo": 0.03
+          }
+        }
+      }
+    },
+    {
+      "name": "Jaqueline Rodrigues",
+      "cpf": "094.164.999-78",
+      "pin": "9978",
+      "debts": {
+        "atrasada": {
+          "value": 4801.00,
+          "negotiation": {
+            "entrada_minima": 1500.00,
+            "parcelamento_entrada_max": 5,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 85.00,
+            "taxa_saldo": 0.02
+          }
+        }
+      }
+    },
+    {
+      "name": "Idaiana Teixeira Guimarães",
+      "cpf": "078.701.689-63",
+      "pin": "8963",
+      "debts": {
+        "atrasada": {
+          "value": 455.54,
+          "negotiation": {
+            "entrada_minima": 200.00,
+            "parcelamento_entrada_max": 1,
+            "taxa_entrada": 0.000,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 50.00,
+            "taxa_saldo": 0.009
+          }
+        }
+      }
+    },
+    {
+      "name": "Carlos Augusto",
+      "cpf": "44998606792",
+      "pin": "4492",
+      "debts": {
+        "atrasada": {
+          "value": 130.00,
+          "notification_advogado": 150.00
+        },
+        "total": {
+          "value": 280.00,
+          "negotiation": {
+            "entrada_minima": 80.00,
+            "parcelamento_entrada_max": 5,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 25.00,
+            "taxa_saldo": 0.09
+          }
+        }
+      }
+    },
+    {
+      "name": "Wilian Tiago dos Santos Silva",
+      "cpf": "082.913.159-06",
+      "pin": "5906",
+      "debts": {
+        "atrasada": {
+          "value": 350.00,
+          "notification_advogado": 150.00
+        },
+        "total": {
+          "value": 500.00,
+          "negotiation": {
+            "entrada_minima": 150.00,
+            "parcelamento_entrada_max": 2,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 25.00,
+            "taxa_saldo": 0.09
+          }
+        }
+      }
+    },
+    {
+      "name": "Paulo Ricardo de Oliveira Correira",
+      "cpf": "079.010.139-40",
+      "pin": "3940",
+      "debts": {
+        "atrasada": {
+          "value": 225.00,
+          "notification_advogado": 150.00
+        },
+        "total": {
+          "value": 375.00,
+          "negotiation": {
+            "entrada_minima": 150.00,
+            "parcelamento_entrada_max": 2,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 25.00,
+            "taxa_saldo": 0.09
+          }
+        }
+      }
+    },
+    {
+      "name": "Monica Riquelme",
+      "cpf": "707.604.741-17",
+      "pin": "4117",
+      "debts": {
+        "atrasada": {
+          "value": 835.69,
+          "negotiation": {
+            "entrada_minima": 300.00,
+            "parcelamento_entrada_max": 3,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 50.00,
+            "taxa_saldo": 0.09
+          }
+        }
+      }
+    },
+    {
+      "name": "Marina Srivan",
+      "cpf": "078.900.679-09",
+      "pin": "7909",
+      "debts": {
+        "atrasada": {
+          "value": 1248.56
+        },
+        "vencendo_hoje": {
+          "value": 250.00
+        },
+        "a_vencer": {
+          "value": 4110.00
+        },
+        "total": {
+          "value": 5608.56,
+          "negotiation": {
+            "entrada_minima": 2000.00,
+            "parcelamento_entrada_max": 4,
+            "taxa_entrada": 0.000,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 100.00,
+            "taxa_saldo": 0.001
+          }
+        }
+      }
+    },
+    {
+      "name": "Luciano Oliveira da Costa",
+      "cpf": "717.954.052-87",
+      "pin": "5287",
+      "debts": {
+        "atrasada": {
+          "value": 537.63,
+          "negotiation": {
+            "entrada_minima": 300.00,
+            "parcelamento_entrada_max": 2,
+            "taxa_entrada": 0.005,
+            "parcelamento_saldo_max": 96,
+            "parcela_minima_saldo": 75.00,
+            "taxa_saldo": 0.02
+          }
+        }
+      }
+    }
+  ]
+}
+
