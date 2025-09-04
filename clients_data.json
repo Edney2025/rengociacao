@@ -337,4 +337,36 @@
     }
   ]
 }
+{
+  "name": "Bruna Pereira do Santos de Oliveira",
+  "cpf": "084.371.249-05",
+  "pin": "0805",
+  "debts": {
+    "a_vencer": {
+      "value": 11313.60
+    },
+    "vencendo_hoje": {
+      "date": "15/09",
+      "value": 1565.00,
+      "detalhes": {
+        "parcelas": [
+          { "quantidade": 2, "valor_unitario": 637.50 },
+          { "quantidade": 2, "valor_unitario": 110.00 },
+          { "quantidade": 1, "valor_unitario": 70.00 }
+        ]
+      }
+    },
+    "total": {
+      "value": 11313.60,
+      "negotiation": {
+        "entrada_minima": 3000.00,
+        "parcelamento_entrada_max": 3,
+        "taxa_entrada": 0.005,
+        "parcelamento_saldo_max": 96,
+        "parcela_minima_saldo": 150.00,
+        "taxa_saldo": 0.009
+      }
+    }
+  }
+}
 
