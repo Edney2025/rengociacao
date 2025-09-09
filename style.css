@@ -193,6 +193,15 @@ button:disabled {
     border-left-color: #f39c12; /* Laranja */
 }
 
+/* Novas classes para dívidas específicas */
+.proposal-card.atrasada_jaqueline {
+    border-left-color: #e74c3c; /* Vermelho, para dívida atrasada dela */
+}
+
+.proposal-card.atrasada_bruno_conjunta {
+    border-left-color: #9b59b6; /* Roxo, para negociação conjunta */
+}
+
 
 .proposal-card h3 {
     color: #34495e;
