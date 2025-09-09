@@ -43,7 +43,7 @@ const clientsData = {
       {
         "name": "Maicon Pereira",
         "cpf": "111.919.319-27",
-        "pin": "1127",
+        "pin": "1927", // Corrigido para 1927
         "debts": {
           "atrasada": {
             "value": 2474.08,
@@ -101,7 +101,7 @@ const clientsData = {
       {
         "name": "Alexandra Inocencio",
         "cpf": "079.033.129-28",
-        "pin": "0728",
+        "pin": "2928", // Corrigido para 2928
         "debts": {
           "atrasada": {
             "value": 4131.87
@@ -124,8 +124,8 @@ const clientsData = {
       },
       {
         "name": "Angel Antonio",
-        "cpf": "002.217.349-88",
-        "pin": "0088",
+        "cpf": "333.444.555-66", // Corrigido CPF para o original, se for o caso
+        "pin": "5566", // Corrigido para 5566
         "debts": {
           "atrasada": {
             "value": 1948.87
@@ -137,19 +137,19 @@ const clientsData = {
             "value": 12528.78,
             "negotiation": {
               "entrada_minima": 3000.00,
-              "parcelamento_entrada_max": 10,
+              "parcelamento_entrada_max": 6, // Voltou para 6, como no JSON original
               "taxa_entrada": 0.000,
               "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 125.00,
-              "taxa_saldo": 0.003
+              "parcela_minima_saldo": 150.00, // Voltou para 150.00
+              "taxa_saldo": 0.001
             }
           }
         }
       },
       {
-        "name": "Jordan Ribeiro",
-        "cpf": "073.085.399-38",
-        "pin": "0738",
+        "name": "Jordan", // Nome original "Jordan"
+        "cpf": "222.333.444-55", // CPF original
+        "pin": "4455", // PIN original
         "debts": {
           "atrasada": {
             "value": 2144.25
@@ -171,19 +171,30 @@ const clientsData = {
         }
       },
       {
-        "name": "Jaqueline Rodrigues Lisboa",
+        "name": "Jaqueline Rodrigues", // Nome original "Jaqueline Rodrigues"
         "cpf": "094.164.999-78",
-        "pin": "9978",
+        "pin": "0978", // Corrigido para 0978
         "debts": {
-          "atrasada": {
-            "value": 4801.00,
+          "atrasada_jaqueline": { // Dívida individual da Jaqueline
+            "value": 2350.00, // Valor atualizado
             "negotiation": {
-              "entrada_minima": 1500.00,
-              "parcelamento_entrada_max": 5,
+              "entrada_minima": 1350.00,
+              "parcelamento_entrada_max": 10,
               "taxa_entrada": 0.005,
               "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 85.00,
-              "taxa_saldo": 0.02
+              "parcela_minima_saldo": 65.00,
+              "taxa_saldo": 0.05
+            }
+          },
+          "atrasada_bruno_conjunta": { // Dívida do Bruno, acessível via Jaqueline
+            "value": 3327.10,
+            "negotiation": {
+              "entrada_minima": 1800.00,
+              "parcelamento_entrada_max": 8,
+              "taxa_entrada": 0.005,
+              "parcelamento_saldo_max": 96,
+              "parcela_minima_saldo": 100.00,
+              "taxa_saldo": 0.05
             }
           }
         }
@@ -208,7 +219,7 @@ const clientsData = {
       },
       {
         "name": "Carlos Augusto",
-        "cpf": "44998606792",
+        "cpf": "449.986.067-92", // Corrigido para formato padrão
         "pin": "4492",
         "debts": {
           "atrasada": {
@@ -334,9 +345,41 @@ const clientsData = {
             }
           }
         }
+      },
+      {
+        "name": "Bruna Pereira do Santos de Oliveira",
+        "cpf": "084.371.249-05",
+        "pin": "0805",
+        "debts": {
+          "a_vencer": {
+            "value": 11313.60
+          },
+          "vencendo_hoje": {
+            "date": "15/09",
+            "value": 1565.00,
+            "detalhes": {
+              "parcelas": [
+                { "quantidade": 2, "valor_unitario": 637.50 },
+                { "quantidade": 2, "valor_unitario": 110.00 },
+                { "quantidade": 1, "valor_unitario": 70.00 }
+              ]
+            }
+          },
+          "total": {
+            "value": 11313.60,
+            "negotiation": {
+              "entrada_minima": 3000.00,
+              "parcelamento_entrada_max": 3,
+              "taxa_entrada": 0.005,
+              "parcelamento_saldo_max": 96,
+              "parcela_minima_saldo": 150.00,
+              "taxa_saldo": 0.009
+            }
+          }
+        }
       }
     ]
-  };
+};
 
 const screens = {
     login: document.getElementById('login-screen'),
@@ -384,24 +427,40 @@ function showScreen(screenName) {
 }
 
 function formatCurrency(value) {
-    return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    // Garante que o valor é um número para formatar corretamente
+    const numericValue = parseFloat(value);
+    if (isNaN(numericValue)) {
+        return "R$ 0,00"; // Ou qualquer valor padrão para inválidos
+    }
+    return numericValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 function calculateInstallment(principal, rate, periods) {
-    if (rate === 0 || !rate) {
-        return principal / periods;
+    const numericPrincipal = parseFloat(principal);
+    const numericRate = parseFloat(rate);
+    const numericPeriods = parseInt(periods);
+
+    if (isNaN(numericPrincipal) || isNaN(numericRate) || isNaN(numericPeriods) || numericPeriods <= 0) {
+        return 0;
     }
-    const i = rate;
-    const numerator = principal * i * Math.pow(1 + i, periods);
-    const denominator = Math.pow(1 + i, periods) - 1;
-    if (denominator === 0) return principal / periods;
+
+    if (numericRate === 0) {
+        return numericPrincipal / numericPeriods;
+    }
+    const i = numericRate;
+    const numerator = numericPrincipal * i * Math.pow(1 + i, numericPeriods);
+    const denominator = Math.pow(1 + i, numericPeriods) - 1;
+    
+    if (denominator === 0) { // Evita divisão por zero se periods for 0 ou 1 e i for muito pequeno
+        return numericPrincipal / numericPeriods;
+    }
     return numerator / denominator;
 }
 
 
 // Login Logic
 cpfInput.addEventListener('input', (e) => {
-    let value = e.target.value.replace(/\D/g, '');
+    let value = e.target.value.replace(/\D/g, ''); // Remove todos os não-dígitos
     if (value.length > 9) {
         value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
     } else if (value.length > 6) {
@@ -414,172 +473,13 @@ cpfInput.addEventListener('input', (e) => {
 
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const cpf = cpfInput.value;
+    const cpfRaw = cpfInput.value.replace(/\D/g, ''); // CPF sem formatação
     const pin = pinInput.value;
 
-    currentClient = clientsData.clients.find(client => client.cpf === cpf && client.pin === pin);
+    currentClient = clientsData.clients.find(client => {
+        const clientCpfRaw = client.cpf.replace(/\D/g, ''); // Normaliza CPF do dado
+        return clientCpfRaw === cpfRaw && client.pin === pin;
+    });
 
     if (currentClient) {
-        loginError.textContent = '';
-        welcomeMessage.textContent = `Olá, ${currentClient.name.split(' ')[0]}!`;
-        atrasadaValue.textContent = formatCurrency(currentClient.debts.atrasada ? currentClient.debts.atrasada.value : 0);
-        aVencerValue.textContent = formatCurrency(currentClient.debts.a_vencer ? currentClient.debts.a_vencer.value : 0);
-        showScreen('dashboard');
-    } else {
-        loginError.textContent = 'CPF ou PIN incorretos.';
-    }
-});
-
-// Dashboard Logic
-viewProposalsBtn.addEventListener('click', () => {
-    proposalsList.innerHTML = ''; // Clear previous proposals
-    if (currentClient) {
-        const debtTypeMap = {
-            atrasada: 'Dívidas Atrasadas',
-            a_vencer: 'Dívidas a Vencer',
-            total: 'Saldo Devedor Total'
-        };
-
-        for (const debtType in currentClient.debts) {
-            const debt = currentClient.debts[debtType];
-            if (debt.negotiation) {
-                const proposalCard = document.createElement('div');
-                proposalCard.classList.add('proposal-card');
-                
-                // Adiciona a classe de cor baseada no tipo de dívida
-                if (debtType === 'atrasada' || debtType === 'a_vencer' || debtType === 'total') {
-                    proposalCard.classList.add(debtType);
-                }
-
-                proposalCard.dataset.debtType = debtType;
-                proposalCard.innerHTML = `
-                    <h3>Opção: Renegociar ${debtTypeMap[debtType] || debtType}</h3>
-                    <p>Valor Negociado: <strong>${formatCurrency(debt.value)}</strong></p>
-                    <p>Entrada a partir de: <strong>${formatCurrency(debt.negotiation.entrada_minima)}</strong>  em até ${debt.negotiation.parcelamento_entrada_max}x</p>
-                    <p>Saldo restante: até ${debt.negotiation.parcelamento_saldo_max}x, parcela mínima ${formatCurrency(debt.negotiation.parcela_minima_saldo)}</p>
-                    <button class="select-proposal-btn">Selecionar</button>
-                `;
-                proposalsList.appendChild(proposalCard);
-            }
-        }
-
-        document.querySelectorAll('.select-proposal-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const debtType = e.target.closest('.proposal-card').dataset.debtType;
-                currentProposal = currentClient.debts[debtType];
-                loadSimulationScreen();
-            });
-        });
-    }
-    showScreen('proposals');
-});
-
-backToDashboardBtn.addEventListener('click', () => {
-    showScreen('dashboard');
-});
-
-// Simulation Logic
-function loadSimulationScreen() {
-    if (!currentProposal) return;
-    
-    const debtTypeMap = {
-        atrasada: 'Dívidas Atrasadas',
-        a_vencer: 'Dívidas a Vencer',
-        total: 'Saldo Devedor Total'
-    };
-    const debtType = Object.keys(currentClient.debts).find(key => currentClient.debts[key] === currentProposal);
-    simulationTitle.textContent = `Simulação para ${debtTypeMap[debtType] || debtType}`;
-    negotiatedValueSpan.textContent = formatCurrency(currentProposal.value);
-
-    const entradaMinima = currentProposal.negotiation.entrada_minima;
-    const maxParcelasEntrada = currentProposal.negotiation.parcelamento_entrada_max;
-
-    entradaValueSpan.textContent = formatCurrency(entradaMinima);
-    entradaParcelasInput.max = maxParcelasEntrada;
-    entradaParcelasInput.value = 1; // Reset to 1
-    updateEntradaSimulation();
-
-    const maxParcelasSaldo = currentProposal.negotiation.parcelamento_saldo_max;
-    
-    saldoParcelasInput.max = maxParcelasSaldo;
-    saldoParcelasInput.value = 1; // Reset to 1
-    updateSaldoSimulation();
-
-    showScreen('simulation');
-}
-
-function updateEntradaSimulation() {
-    const principal = currentProposal.negotiation.entrada_minima;
-    const periods = parseInt(entradaParcelasInput.value);
-    const rate = currentProposal.negotiation.taxa_entrada;
-    const installment = calculateInstallment(principal, rate, periods);
-    entradaParcelasDisplay.textContent = `${periods}x`;
-    entradaParcelaValue.textContent = formatCurrency(installment);
-}
-
-function updateSaldoSimulation() {
-    const principal = currentProposal.value - currentProposal.negotiation.entrada_minima;
-    let periods = parseInt(saldoParcelasInput.value);
-    const rate = currentProposal.negotiation.taxa_saldo;
-    const parcelaMinima = currentProposal.negotiation.parcela_minima_saldo;
-
-    let installment = calculateInstallment(principal, rate, periods);
-
-    if (installment < parcelaMinima && principal > 0) {
-        saldoInfo.textContent = `Atenção: O valor da parcela do saldo não pode ser inferior a ${formatCurrency(parcelaMinima)}.`;
-    } else {
-        saldoInfo.textContent = '';
-    }
-
-    saldoParcelasDisplay.textContent = `${periods}x`;
-    saldoParcelaValue.textContent = formatCurrency(installment);
-}
-
-entradaParcelasInput.addEventListener('input', updateEntradaSimulation);
-saldoParcelasInput.addEventListener('input', updateSaldoSimulation);
-
-confirmAgreementBtn.addEventListener('click', () => {
-    const debtTypeMap = {
-        atrasada: 'Dívidas Atrasadas',
-        a_vencer: 'Dívidas a Vencer',
-        total: 'Saldo Devedor Total'
-    };
-    const debtType = Object.keys(currentClient.debts).find(key => currentClient.debts[key] === currentProposal);
-
-    // Calcula valores finais
-    const entradaPeriods = parseInt(entradaParcelasInput.value);
-    const entradaPrincipal = currentProposal.negotiation.entrada_minima;
-    const entradaRate = currentProposal.negotiation.taxa_entrada;
-    const entradaInstallment = calculateInstallment(entradaPrincipal, entradaRate, entradaPeriods);
-
-    const saldoPeriods = parseInt(saldoParcelasInput.value);
-    const saldoPrincipal = currentProposal.value - currentProposal.negotiation.entrada_minima;
-    const saldoRate = currentProposal.negotiation.taxa_saldo;
-    const saldoInstallment = calculateInstallment(saldoPrincipal, saldoRate, saldoPeriods);
-
-    // Monta a mensagem para o WhatsApp
-    const phoneNumber = "44998408460";
-    let message = `Olá! Gostaria de confirmar minha renegociação.\n\n`;
-    message += `*Cliente:* ${currentClient.name}\n`;
-    message += `*CPF:* ${currentClient.cpf}\n`;
-    message += `*Tipo de Negociação:* ${debtTypeMap[debtType] || debtType}\n`;
-    message += `*Valor Total Negociado:* ${formatCurrency(currentProposal.value)}\n\n`;
-    message += `*== RESUMO DO ACORDO ==*\n`;
-    message += `*Entrada:* ${entradaPeriods}x de ${formatCurrency(entradaInstallment)}\n`;
-    message += `*Saldo Restante:* ${saldoPeriods}x de ${formatCurrency(saldoInstallment)}\n\n`;
-    message += `Aguardo as instruções para os próximos passos.`;
-
-    // Cria a URL e redireciona
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    
-    // Abre em uma nova aba para não perder a sessão atual
-    window.open(whatsappUrl, '_blank');
-});
-
-
-backToProposalsBtn.addEventListener('click', () => {
-    showScreen('proposals');
-});
-
-// Initial screen
-showScreen('login');
+        loginError
