@@ -1,386 +1,3 @@
-const clientsData = {
-    "clients": [
-      {
-        "name": "Amanda Lopes Inocêncio",
-        "cpf": "097.342.559-83",
-        "pin": "0983",
-        "debts": {
-          "atrasada": {
-            "value": 4289.06,
-            "negotiation": {
-              "entrada_minima": 1500.00,
-              "parcelamento_entrada_max": 6,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 120.00,
-              "taxa_saldo": 0.009
-            }
-          },
-          "a_vencer": {
-            "value": 4193.43,
-            "negotiation": {
-              "entrada_minima": 1000.00,
-              "parcelamento_entrada_max": 6,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 85.00,
-              "taxa_saldo": 0.005
-            }
-          },
-          "total": {
-            "value": 8482.49,
-            "negotiation": {
-              "entrada_minima": 3000.00,
-              "parcelamento_entrada_max": 8,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 135.00,
-              "taxa_saldo": 0.001
-            }
-          }
-        }
-      },
-      {
-        "name": "Maicon Pereira",
-        "cpf": "111.919.319-27",
-        "pin": "1927", // Corrigido para 1927
-        "debts": {
-          "atrasada": {
-            "value": 2474.08,
-            "negotiation": {
-              "entrada_minima": 1500.00,
-              "parcelamento_entrada_max": 6,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 100.00,
-              "taxa_saldo": 0.005
-            }
-          },
-          "a_vencer": {
-            "value": 7515.00,
-            "negotiation": {
-              "entrada_minima": 3500.00,
-              "parcelamento_entrada_max": 7,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 185.00,
-              "taxa_saldo": 0.009
-            }
-          },
-          "total": {
-            "value": 9989.08,
-            "negotiation": {
-              "entrada_minima": 4500.00,
-              "parcelamento_entrada_max": 10,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 175.00,
-              "taxa_saldo": 0.009
-            }
-          }
-        }
-      },
-      {
-        "name": "Rosangela Santos",
-        "cpf": "111.222.333-44",
-        "pin": "3344",
-        "debts": {
-          "atrasada": {
-            "value": 1349.40,
-            "negotiation": {
-              "entrada_minima": 500.00,
-              "parcelamento_entrada_max": 5,
-              "taxa_entrada": 0.009,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 85.00,
-              "taxa_saldo": 0.02
-            }
-          }
-        }
-      },
-      {
-        "name": "Alexandra Inocencio",
-        "cpf": "079.033.129-28",
-        "pin": "2928", // Corrigido para 2928
-        "debts": {
-          "atrasada": {
-            "value": 4131.87
-          },
-          "a_vencer": {
-            "value": 2456.60
-          },
-          "total": {
-            "value": 6588.47,
-            "negotiation": {
-              "entrada_minima": 1400.00,
-              "parcelamento_entrada_max": 7,
-              "taxa_entrada": 0.000,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 85.00,
-              "taxa_saldo": 0.001
-            }
-          }
-        }
-      },
-      {
-        "name": "Angel Antonio",
-        "cpf": "333.444.555-66", // Corrigido CPF para o original, se for o caso
-        "pin": "5566", // Corrigido para 5566
-        "debts": {
-          "atrasada": {
-            "value": 1948.87
-          },
-          "a_vencer": {
-            "value": 10580.00
-          },
-          "total": {
-            "value": 12528.78,
-            "negotiation": {
-              "entrada_minima": 3000.00,
-              "parcelamento_entrada_max": 6, // Voltou para 6, como no JSON original
-              "taxa_entrada": 0.000,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 150.00, // Voltou para 150.00
-              "taxa_saldo": 0.001
-            }
-          }
-        }
-      },
-      {
-        "name": "Jordan", // Nome original "Jordan"
-        "cpf": "222.333.444-55", // CPF original
-        "pin": "4455", // PIN original
-        "debts": {
-          "atrasada": {
-            "value": 2144.25
-          },
-          "a_vencer": {
-            "value": 555.00
-          },
-          "total": {
-            "value": 2699.26,
-            "negotiation": {
-              "entrada_minima": 1000.00,
-              "parcelamento_entrada_max": 5,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 85.00,
-              "taxa_saldo": 0.03
-            }
-          }
-        }
-      },
-      {
-        "name": "Jaqueline Rodrigues", // Nome original "Jaqueline Rodrigues"
-        "cpf": "094.164.999-78",
-        "pin": "0978", // Corrigido para 0978
-        "debts": {
-          "atrasada_jaqueline": { // Dívida individual da Jaqueline
-            "value": 2350.00, // Valor atualizado
-            "negotiation": {
-              "entrada_minima": 1350.00,
-              "parcelamento_entrada_max": 10,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 65.00,
-              "taxa_saldo": 0.05
-            }
-          },
-          "atrasada_bruno_conjunta": { // Dívida do Bruno, acessível via Jaqueline
-            "value": 3327.10,
-            "negotiation": {
-              "entrada_minima": 1800.00,
-              "parcelamento_entrada_max": 8,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 100.00,
-              "taxa_saldo": 0.05
-            }
-          }
-        }
-      },
-      {
-        "name": "Idaiana Teixeira Guimarães",
-        "cpf": "078.701.689-63",
-        "pin": "8963",
-        "debts": {
-          "atrasada": {
-            "value": 455.54,
-            "negotiation": {
-              "entrada_minima": 200.00,
-              "parcelamento_entrada_max": 1,
-              "taxa_entrada": 0.000,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 50.00,
-              "taxa_saldo": 0.009
-            }
-          }
-        }
-      },
-      {
-        "name": "Carlos Augusto",
-        "cpf": "449.986.067-92", // Corrigido para formato padrão
-        "pin": "4492",
-        "debts": {
-          "atrasada": {
-            "value": 130.00,
-            "notification_advogado": 150.00
-          },
-          "total": {
-            "value": 280.00,
-            "negotiation": {
-              "entrada_minima": 80.00,
-              "parcelamento_entrada_max": 5,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 25.00,
-              "taxa_saldo": 0.09
-            }
-          }
-        }
-      },
-      {
-        "name": "Wilian Tiago dos Santos Silva",
-        "cpf": "082.913.159-06",
-        "pin": "5906",
-        "debts": {
-          "atrasada": {
-            "value": 350.00,
-            "notification_advogado": 150.00
-          },
-          "total": {
-            "value": 500.00,
-            "negotiation": {
-              "entrada_minima": 150.00,
-              "parcelamento_entrada_max": 2,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 25.00,
-              "taxa_saldo": 0.09
-            }
-          }
-        }
-      },
-      {
-        "name": "Paulo Ricardo de Oliveira Correira",
-        "cpf": "079.010.139-40",
-        "pin": "3940",
-        "debts": {
-          "atrasada": {
-            "value": 225.00,
-            "notification_advogado": 150.00
-          },
-          "total": {
-            "value": 375.00,
-            "negotiation": {
-              "entrada_minima": 150.00,
-              "parcelamento_entrada_max": 2,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 25.00,
-              "taxa_saldo": 0.09
-            }
-          }
-        }
-      },
-      {
-        "name": "Monica Riquelme",
-        "cpf": "707.604.741-17",
-        "pin": "4117",
-        "debts": {
-          "atrasada": {
-            "value": 835.69,
-            "negotiation": {
-              "entrada_minima": 300.00,
-              "parcelamento_entrada_max": 3,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 50.00,
-              "taxa_saldo": 0.09
-            }
-          }
-        }
-      },
-      {
-        "name": "Marina Srivan",
-        "cpf": "078.900.679-09",
-        "pin": "7909",
-        "debts": {
-          "atrasada": {
-            "value": 1248.56
-          },
-          "vencendo_hoje": {
-            "value": 250.00
-          },
-          "a_vencer": {
-            "value": 4110.00
-          },
-          "total": {
-            "value": 5608.56,
-            "negotiation": {
-              "entrada_minima": 2000.00,
-              "parcelamento_entrada_max": 4,
-              "taxa_entrada": 0.000,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 100.00,
-              "taxa_saldo": 0.001
-            }
-          }
-        }
-      },
-      {
-        "name": "Luciano Oliveira da Costa",
-        "cpf": "717.954.052-87",
-        "pin": "5287",
-        "debts": {
-          "atrasada": {
-            "value": 537.63,
-            "negotiation": {
-              "entrada_minima": 300.00,
-              "parcelamento_entrada_max": 2,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 75.00,
-              "taxa_saldo": 0.02
-            }
-          }
-        }
-      },
-      {
-        "name": "Bruna Pereira do Santos de Oliveira",
-        "cpf": "084.371.249-05",
-        "pin": "0805",
-        "debts": {
-          "a_vencer": {
-            "value": 11313.60
-          },
-          "vencendo_hoje": {
-            "date": "15/09",
-            "value": 1565.00,
-            "detalhes": {
-              "parcelas": [
-                { "quantidade": 2, "valor_unitario": 637.50 },
-                { "quantidade": 2, "valor_unitario": 110.00 },
-                { "quantidade": 1, "valor_unitario": 70.00 }
-              ]
-            }
-          },
-          "total": {
-            "value": 11313.60,
-            "negotiation": {
-              "entrada_minima": 3000.00,
-              "parcelamento_entrada_max": 3,
-              "taxa_entrada": 0.005,
-              "parcelamento_saldo_max": 96,
-              "parcela_minima_saldo": 150.00,
-              "taxa_saldo": 0.009
-            }
-          }
-        }
-      }
-    ]
-};
-
 const screens = {
     login: document.getElementById('login-screen'),
     dashboard: document.getElementById('dashboard-screen'),
@@ -403,11 +20,11 @@ const proposalsList = document.getElementById('proposals-list');
 
 const simulationTitle = document.getElementById('simulation-title');
 const negotiatedValueSpan = document.getElementById('negotiated-value');
-const entradaValueSpan = document.getElementById('entrada-value');
+const entradaDisplayValue = document.getElementById('entrada-display-value');
 const entradaParcelasInput = document.getElementById('entrada-parcelas');
 const entradaParcelasDisplay = document.getElementById('entrada-parcelas-display');
 const entradaParcelaValue = document.getElementById('entrada-parcela-value');
-const saldoValueSpan = document.getElementById('saldo-value');
+const saldoDisplayValue = document.getElementById('saldo-display-value');
 const saldoParcelasInput = document.getElementById('saldo-parcelas');
 const saldoParcelasDisplay = document.getElementById('saldo-parcelas-display');
 const saldoParcelaValue = document.getElementById('saldo-parcela-value');
@@ -415,8 +32,9 @@ const saldoInfo = document.getElementById('saldo-info');
 const confirmAgreementBtn = document.getElementById('confirm-agreement-btn');
 const backToProposalsBtn = document.getElementById('back-to-proposals-btn');
 
+let clientsData = { clients: [] }; // Initialize with empty array, will be fetched
 let currentClient = null;
-let currentProposal = null;
+let currentProposal = null; // Stores the selected debt type and its negotiation details
 
 // Helper functions
 function showScreen(screenName) {
@@ -427,10 +45,9 @@ function showScreen(screenName) {
 }
 
 function formatCurrency(value) {
-    // Garante que o valor é um número para formatar corretamente
     const numericValue = parseFloat(value);
     if (isNaN(numericValue)) {
-        return "R$ 0,00"; // Ou qualquer valor padrão para inválidos
+        return "R$ 0,00";
     }
     return numericValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
@@ -451,12 +68,28 @@ function calculateInstallment(principal, rate, periods) {
     const numerator = numericPrincipal * i * Math.pow(1 + i, numericPeriods);
     const denominator = Math.pow(1 + i, numericPeriods) - 1;
     
-    if (denominator === 0) { // Evita divisão por zero se periods for 0 ou 1 e i for muito pequeno
+    if (denominator === 0) {
         return numericPrincipal / numericPeriods;
     }
     return numerator / denominator;
 }
 
+// Fetch client data
+async function fetchClientsData() {
+    try {
+        const response = await fetch('clients_data.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        clientsData = await response.json();
+    } catch (error) {
+        console.error("Could not fetch clients data:", error);
+        loginError.textContent = "Erro ao carregar dados dos clientes. Tente novamente mais tarde.";
+    }
+}
+
+// Initial data fetch
+fetchClientsData();
 
 // Login Logic
 cpfInput.addEventListener('input', (e) => {
@@ -482,4 +115,178 @@ loginForm.addEventListener('submit', (e) => {
     });
 
     if (currentClient) {
-        loginError
+        loginError.textContent = '';
+        renderDashboard();
+        showScreen('dashboard');
+    } else {
+        loginError.textContent = 'CPF ou PIN incorretos. Tente novamente.';
+    }
+});
+
+function renderDashboard() {
+    welcomeMessage.textContent = `Olá, ${currentClient.name.split(' ')[0]}!`;
+
+    const atrasadaVal = currentClient.debts.atrasada ? currentClient.debts.atrasada.value : 0;
+    // Check for specific overdue debts for Jaqueline
+    const atrasadaJaquelineVal = currentClient.debts.atrasada_jaqueline ? currentClient.debts.atrasada_jaqueline.value : 0;
+    const atrasadaBrunoConjuntaVal = currentClient.debts.atrasada_bruno_conjunta ? currentClient.debts.atrasada_bruno_conjunta.value : 0;
+    
+    // Sum all overdue debts for display in the dashboard card
+    const totalAtrasada = atrasadaVal + atrasadaJaquelineVal + atrasadaBrunoConjuntaVal;
+
+    const aVencerVal = currentClient.debts.a_vencer ? currentClient.debts.a_vencer.value : 0;
+    const vencendoHojeVal = currentClient.debts.vencendo_hoje ? currentClient.debts.vencendo_hoje.value : 0;
+    const totalAVencer = aVencerVal + vencendoHojeVal;
+
+    atrasadaValue.textContent = formatCurrency(totalAtrasada);
+    aVencerValue.textContent = formatCurrency(totalAVencer);
+}
+
+viewProposalsBtn.addEventListener('click', () => {
+    renderProposals();
+    showScreen('proposals');
+});
+
+backToDashboardBtn.addEventListener('click', () => {
+    showScreen('dashboard');
+});
+
+function renderProposals() {
+    proposalsList.innerHTML = ''; // Clear previous proposals
+
+    const debtTypes = {
+        atrasada: 'Dívida Atrasada',
+        a_vencer: 'Dívida a Vencer',
+        total: 'Dívida Total',
+        atrasada_jaqueline: 'Dívida Atrasada (Individual)',
+        atrasada_bruno_conjunta: 'Dívida Atrasada (Conjunta com Bruno)'
+    };
+
+    for (const debtKey in currentClient.debts) {
+        const debt = currentClient.debts[debtKey];
+        if (debt.negotiation) { // Only show proposals for debts with negotiation terms
+            const card = document.createElement('div');
+            card.classList.add('proposal-card', debtKey); // Add specific class for styling
+            
+            const title = document.createElement('h3');
+            title.textContent = debtTypes[debtKey] || debtKey.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Nicer title
+
+            const value = document.createElement('p');
+            value.textContent = `Valor Original: ${formatCurrency(debt.value)}`;
+
+            let entryDetails = '';
+            if (debt.negotiation.entrada_minima > 0) {
+                entryDetails = `Entrada Mínima: ${formatCurrency(debt.negotiation.entrada_minima)} (até ${debt.negotiation.parcelamento_entrada_max}x)`;
+            } else {
+                entryDetails = 'Não exige entrada.';
+            }
+
+            const terms = document.createElement('p');
+            terms.innerHTML = `
+                ${entryDetails}<br>
+                Parcelamento Saldo: até ${debt.negotiation.parcelamento_saldo_max}x<br>
+                Parcela Mínima: ${formatCurrency(debt.negotiation.parcela_minima_saldo)}
+            `;
+
+            const selectButton = document.createElement('button');
+            selectButton.textContent = 'Simular Proposta';
+            selectButton.addEventListener('click', () => {
+                currentProposal = {
+                    type: debtKey,
+                    value: debt.value,
+                    negotiation: debt.negotiation
+                };
+                renderSimulationScreen();
+                showScreen('simulation');
+            });
+
+            card.append(title, value, terms, selectButton);
+            proposalsList.appendChild(card);
+        }
+    }
+}
+
+function renderSimulationScreen() {
+    simulationTitle.textContent = `Simular Renegociação - ${currentProposal.type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`;
+    negotiatedValueSpan.textContent = formatCurrency(currentProposal.value);
+
+    // Set max for entry and saldo parcel sliders
+    entradaParcelasInput.max = currentProposal.negotiation.parcelamento_entrada_max;
+    entradaParcelasInput.value = 1; // Reset to 1x
+    entradaParcelasDisplay.textContent = '1x';
+
+    saldoParcelasInput.max = currentProposal.negotiation.parcelamento_saldo_max;
+    saldoParcelasInput.value = 1; // Reset to 1x
+    saldoParcelasDisplay.textContent = '1x';
+
+    updateSimulationValues(); // Initial calculation
+}
+
+function updateSimulationValues() {
+    const entradaMinima = currentProposal.negotiation.entrada_minima;
+    const taxaEntrada = currentProposal.negotiation.taxa_entrada;
+    const taxaSaldo = currentProposal.negotiation.taxa_saldo;
+    const parcelaMinimaSaldo = currentProposal.negotiation.parcela_minima_saldo;
+    
+    // Entrada calculation
+    let entradaAtual = entradaMinima; // Assuming the user will pay at least the minimum entry
+    const numParcelasEntrada = parseInt(entradaParcelasInput.value);
+    entradaDisplayValue.textContent = formatCurrency(entradaAtual);
+    entradaParcelasDisplay.textContent = `${numParcelasEntrada}x`;
+
+    const valorParcelaEntrada = calculateInstallment(entradaAtual, taxaEntrada, numParcelasEntrada);
+    entradaParcelaValue.textContent = formatCurrency(valorParcelaEntrada);
+
+    // Saldo restante calculation
+    let saldoRestante = currentProposal.value - entradaAtual;
+    if (saldoRestante < 0) saldoRestante = 0; // Ensure saldo is not negative
+
+    saldoDisplayValue.textContent = formatCurrency(saldoRestante);
+    const numParcelasSaldo = parseInt(saldoParcelasInput.value);
+    saldoParcelasDisplay.textContent = `${numParcelasSaldo}x`;
+
+    const valorParcelaSaldo = calculateInstallment(saldoRestante, taxaSaldo, numParcelasSaldo);
+    saldoParcelaValue.textContent = formatCurrency(valorParcelaSaldo);
+
+    // Validate minimum installment for remaining balance
+    if (valorParcelaSaldo < parcelaMinimaSaldo && saldoRestante > 0) {
+        saldoInfo.textContent = `A parcela mínima para o saldo restante é ${formatCurrency(parcelaMinimaSaldo)}. Ajuste o número de parcelas.`;
+        saldoInfo.style.display = 'block';
+        confirmAgreementBtn.disabled = true;
+    } else {
+        saldoInfo.style.display = 'none';
+        confirmAgreementBtn.disabled = false;
+    }
+}
+
+entradaParcelasInput.addEventListener('input', updateSimulationValues);
+saldoParcelasInput.addEventListener('input', updateSimulationValues);
+
+
+confirmAgreementBtn.addEventListener('click', () => {
+    const entradaMinima = currentProposal.negotiation.entrada_minima;
+    const numParcelasEntrada = parseInt(entradaParcelasInput.value);
+    const valorParcelaEntrada = parseFloat(entradaParcelaValue.textContent.replace('R$', '').replace('.', '').replace(',', '.'));
+    
+    const saldoRestante = parseFloat(saldoDisplayValue.textContent.replace('R$', '').replace('.', '').replace(',', '.'));
+    const numParcelasSaldo = parseInt(saldoParcelasInput.value);
+    const valorParcelaSaldo = parseFloat(saldoParcelaValue.textContent.replace('R$', '').replace('.', '').replace(',', '.'));
+
+    let message = `Olá! Meu nome é ${currentClient.name}.%0A`;
+    message += `Gostaria de formalizar a negociação da minha ${currentProposal.type.replace(/_/g, ' ')}.%0A%0A`;
+    message += `*Detalhes da Proposta:*%0A`;
+    message += `Valor Original da Dívida: ${formatCurrency(currentProposal.value)}%0A`;
+    message += `Valor da Entrada: ${formatCurrency(entradaMinima)} em ${numParcelasEntrada}x de ${formatCurrency(valorParcelaEntrada)}%0A`;
+    message += `Saldo Restante: ${formatCurrency(saldoRestante)} em ${numParcelasSaldo}x de ${formatCurrency(valorParcelaSaldo)}%0A%0A`;
+    message += `Por favor, me ajude a finalizar o acordo.`;
+
+    const whatsappUrl = `https://wa.me/?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+});
+
+backToProposalsBtn.addEventListener('click', () => {
+    showScreen('proposals');
+});
+
+// Initial screen load
+showScreen('login');
