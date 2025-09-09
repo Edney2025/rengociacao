@@ -41,18 +41,6 @@ Para utilizar este sistema localmente, siga os passos abaixo:
     *   Ajuste os sliders para definir o número de parcelas da entrada e do saldo. Os valores serão atualizados automaticamente.
     *   Clique em "Confirmar e Gerar Acordo". Uma nova aba será aberta, redirecionando você para o WhatsApp com todos os detalhes do acordo preenchidos.
 
-## Clientes de Teste
-
-Você pode usar os seguintes dados de clientes para testar o sistema (CPF e PIN definidos no `script.js`):
-
-| Nome do Cliente               | CPF             | PIN  |
-| :---------------------------- | :-------------- | :--- |
-| Amanda Lopes Inocêncio        | 097.342.559-83  | 0983 |
-| Maicon Pereira                | 111.919.319-27  | 1927 |
-| Rosangela Santos              | 111.222.333-44  | 3344 |
-| ...e outros listados no código. | ...             | ...  |
-
-
 ## Considerações Finais
 
 Este projeto é uma demonstração conceitual e serve como um "blueprint" funcional para o desenvolvimento de um sistema mais completo, com um backend robusto e um banco de dados real.
